@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Management System</title>
+		{% load static %}
+		<link rel="stylesheet" href="{% static '/css/style.css' %}">
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	</head>
+	<body>
+		<div id="wrap">
+			<div id="nav">
+				<div id="left">
+					<h1>Lyah's Inventory System</h1>
+				</div>
+			</div>
+			<div id="data">
+				<div>
+					<a href="{% url 'display_laptops' %}"><p id="laptop">Laptops</p></a>
+					<a href="{% url 'display_desktops' %}"><p id="desktop">Desktop</p></a>
+					<a href="{% url 'display_mobiles' %}"><p id="mobile">Mobile</p></a>
+				</div>
+				<div id="label">
+					<span>Model</span>
+					<span>Price</span>
+					<span>Status</span>
+					<span>Issue/s</span>
+				</div>
+				<br />
+				<div id="items">
+					<table style="width:100%">
+						{% for item in items %}
+						<tr>
+							<td>{{item.type}}</td>
+							<td class="left">{{item.price}}</td>
+							<td class="left">{{item.status}}</td>
+							<td class="left">{{item.issues}}</td>
+						</tr>
+						{% endfor %}
+					</table>
+					<br />
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
